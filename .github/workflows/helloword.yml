@@ -9,7 +9,7 @@ on:
 
 jobs:
   hello_word:
-    runs-on: ubantu-latest
+    runs-on: windows-latest
     steps:
       - name: "Print Hello World"
         run: echo "Hello World"
