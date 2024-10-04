@@ -25,6 +25,13 @@ jobs:
             - name: "Running on pull request" # Step 1
               run: echo "Running on pull request"
 
+    on-pull-request-closed:
+        if: github.event_name == 'pull_request' && github.event.action == 'closed'
+        runs-on: windows-latest
+        steps:
+            - name: "Running on pull request closed"
+              run: echo "Running on pull request closed"
+
     on-workflow-dispatch: # job 3
         if: github.event_name == 'workflow_dispatch'
         runs-on: windows-latest
