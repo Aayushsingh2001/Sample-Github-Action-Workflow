@@ -7,6 +7,7 @@ on:
     pull_request: # Event: Whenever a pull request is made to the repository
         branches:
             - master
+            - opened
     workflow_dispatch:
 
 jobs:
@@ -23,6 +24,20 @@ jobs:
         steps: # Steps to be executed in the job
             - name: "Running on pull request" # Step 1
               run: echo "Running on pull request"
+
+    on-pull-request-opened:
+        if: github.event_name == 'pull_request' && github.event.action == 'opened'
+        runs-on: windows-latest
+        steps:
+            - name: "Running on pull request opened"
+              run: echo "Running on pull request opened"
+
+    on-pull-request-closed:
+        if: github.event_name == 'pull_request' && github.event.action == 'closed'
+        runs-on: windows-latest
+        steps:
+            - name: "Running on pull request closed"
+              run: echo "Running on pull request closed"
 
     on-workflow-dispatch: # job 3
         if: github.event_name == 'workflow_dispatch'
